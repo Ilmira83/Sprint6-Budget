@@ -1,14 +1,37 @@
+.header{
+  background: linear-gradient(to right, rgba(74, 199, 224, 0.2), rgba(74, 199, 224, 1));
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 15px;
+}
 .form-group{
+  justify-content: center;
+  text-align: center;
   border-radius: 15px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   padding: 10px 10px 10px 10px;
 }
+.savedBudgets{
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.currentbudgets{
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgb(74, 199, 224);
+}
 .savedInfo{
+  margin-top: 20px;
   border-radius: 15px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   padding: 10px 10px 10px 10px;
 }
 .validations{
   color: red;
-  font-size: 10px;
+  font-size: 13px;
+}
+.budgetcolored{
+  color: rgb(74, 199, 224);
 }

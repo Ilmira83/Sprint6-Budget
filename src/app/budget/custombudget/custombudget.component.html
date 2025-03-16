@@ -1,17 +1,8 @@
 <section class="form-group" [formGroup] ="customBudgetForm">
   <div class="header ms-2">
-    <h1 class="fs-4">Request your budget</h1>
+    <h1 class="fs-4 mb-3 text-center">Request your budget</h1>
   </div>
-  <div class="navbar container-fluid justify-content-end">
-    <form class="d-flex postition-relative" role="search">
-      <input class="form-control me-2" type="search" formControlName ="searchCriteria"
-      placeholder="Search" aria-label="Search...">
-      <button class="btn btn-outline-info" type="button" (click)="getSearchCriteria()">Search</button>
-    </form>
-    <button class="btn btn-outline-info ms-2" (click)="alphabetSorted()">Order A-Z</button>
-    <button class="btn btn-outline-info ms-2" (click)="priceSorted()">Order by price</button>
-  </div>
-  <div class="input-group-conteiner inputs d-flex" >
+  <div class="input-group-conteiner inputs d-flex justify-content-center" >
     <div class="d-flex flex-column ms-2 me-2">
       <input type="text" class="form-control" placeholder="Name" formControlName ="name">
       @if(customBudgetForm.controls['name'].touched){
@@ -49,12 +40,28 @@
     </div>
   </div>
 </section>
+<section class="savedbudgets navigation" [formGroup] ="customBudgetForm">
+  <div class="currentbudgets">
+    <h1 class="fs-4">Current budgets:</h1>
+  </div>
+  <div class="navbar container-fluid justify-content-end">
+    <form class="d-flex postition-relative" role="search">
+      <input class="form-control me-2" type="search" formControlName ="searchCriteria"
+        placeholder="Search" aria-label="Search...">
+      <button class="btn btn-outline-info" type="button" (click)="getSearchCriteria()">Search</button>
+    </form>
+    <button class="btn btn-outline-info ms-2" (click)="alphabetSorted()">Order A-Z</button>
+    <button class="btn btn-outline-info ms-2" (click)="priceSorted()">Order by price</button>
+  </div>
+</section>
+  
+
 @if(dataSent===true){
   <section class="savedBudgets">
   @for(budget of filteredBudget(); track budget; let i = $index){
-  <div class="savedInfo d-flex border-5 rounded-bottom-1">
+  <div class="savedInfo d-flex">
     <div class="d-grid me-5">
-      <h4>{{budget.name}}</h4>
+      <h4 class="budgetcolored">{{budget.name}}</h4>
       <p>{{budget.email}}</p>
       <p>{{budget.phone}}</p>
     </div>
@@ -64,7 +71,7 @@
     </div>
     <div class="d-grid">
       <h4>TotalPrice</h4>
-      <h5>{{budget.price}}</h5>
+      <h5 class="budgetcolored">{{budget.price}}</h5>
     </div>
   </div>
   }
