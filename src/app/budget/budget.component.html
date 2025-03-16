@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header class="header">
+  <h1>Get the best quality</h1>
+</header>
+@for (budget of budgets; track budget; let i = $index) {
+  <section class="forms" [formGroup] = "budgetForm">
+    <div class="form-content me-5 ms-5" >
+      <h2> {{budget.title}} </h2>
+      <p> {{budget.description}} </p>
+    </div>
+    <h3 > {{budget.price}}$ </h3>
+    <div class="form-check">
+      <label class="form-check-label" >
+        <input class="form-check-input" type="checkbox" value="{{budget.price}}" formControlName="checkBoxActive"
+         (click)="checkBoxActive($index, $event)">
+         Add
+      </label>
+    </div>
+  </section> 
+}
+  <section class="customPanel">
+    @if(openPanel() && counter === 2) {
+      <app-custompanel></app-custompanel>
+    }
+  </section> 
+ <section class="finalPrice">
+  <h3>Budget price: {{finalBudgetPrice()}} $</h3>
+ </section>
+  <section class="customBudget">
+    <app-custombudget></app-custombudget>
+  </section>
+</body>
+</html>

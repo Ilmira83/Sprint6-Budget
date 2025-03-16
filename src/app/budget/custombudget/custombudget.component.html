@@ -1,0 +1,74 @@
+<section class="form-group" [formGroup] ="customBudgetForm">
+  <div class="header ms-2">
+    <h1 class="fs-4">Request your budget</h1>
+  </div>
+  <div class="navbar container-fluid justify-content-end">
+    <form class="d-flex postition-relative" role="search">
+      <input class="form-control me-2" type="search" formControlName ="searchCriteria"
+      placeholder="Search" aria-label="Search...">
+      <button class="btn btn-outline-info" type="button" (click)="getSearchCriteria()">Search</button>
+    </form>
+    <button class="btn btn-outline-info ms-2" (click)="alphabetSorted()">Order A-Z</button>
+    <button class="btn btn-outline-info ms-2" (click)="priceSorted()">Order by price</button>
+  </div>
+  <div class="input-group-conteiner inputs d-flex" >
+    <div class="d-flex flex-column ms-2 me-2">
+      <input type="text" class="form-control" placeholder="Name" formControlName ="name">
+      @if(customBudgetForm.controls['name'].touched){
+        @if(customBudgetForm.controls['name'].errors?.['required']){
+          <p class="validations">This field is required.</p>}
+        @if(customBudgetForm.controls['name'].errors?.['pattern']){
+          <p class="validations">Only latin letters are allowed.</p>
+        }
+      }
+    </div>
+    <div class="d-flex flex-column me-2">
+      <input type="text" class="form-control" placeholder="Telephone" formControlName ="phone">
+      @if(customBudgetForm.controls['phone'].touched){
+        @if(customBudgetForm.controls['phone'].errors?.['required']){
+          <p class="validations">This field is required.</p>}
+        @if(customBudgetForm.controls['phone'].errors?.['pattern']){
+          <p class="validations">Only numbers are allowed.</p>}
+        @if(customBudgetForm.controls['phone'].errors?.['minlength']){
+          <p class="validations">Minimum 8 numbers.</p>
+        }
+    }
+    </div>
+    <div class="d-flex flex-column">
+      <input type="text" class="form-control" placeholder="E-mail" formControlName ="email">
+      @if(customBudgetForm.controls['email'].touched){
+        @if(customBudgetForm.controls['email'].errors?.['required']){
+          <p class="validations">This field is required.</p>}
+          @if(customBudgetForm.controls['email'].errors?.['email']){
+            <p class="validations">Enter your e-mail correctly.</p> }
+      }
+    </div>
+    <div>
+      <button type="button" class="btn btn-outline-info ms-2" (click)="sendData()" 
+      [disabled]="!customBudgetForm.valid">Send request</button>
+    </div>
+  </div>
+</section>
+@if(dataSent===true){
+  <section class="savedBudgets">
+  @for(budget of filteredBudget(); track budget; let i = $index){
+  <div class="savedInfo d-flex border-5 rounded-bottom-1">
+    <div class="d-grid me-5">
+      <h4>{{budget.name}}</h4>
+      <p>{{budget.email}}</p>
+      <p>{{budget.phone}}</p>
+    </div>
+    <div class="d-grid me-5">
+      <h4> Saved services </h4>
+      <h5>{{budget.service}}</h5>
+    </div>
+    <div class="d-grid">
+      <h4>TotalPrice</h4>
+      <h5>{{budget.price}}</h5>
+    </div>
+  </div>
+  }
+</section>
+} 
+
+
