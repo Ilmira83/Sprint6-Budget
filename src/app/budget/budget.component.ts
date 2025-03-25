@@ -52,7 +52,10 @@ export class BudgetComponent implements OnInit{
       prices.controls.forEach((p: any)  => {
         if(p.value == e.target.value) {
           prices.removeAt(i);
-          this.budgetPrices.set(prices.value)
+          this.budgetPrices.set(prices.value);
+          this.custompanelPrices.set([0])
+          this.numberOfPages.set(0);
+          this.numberOfLangs.set(0);
           return;
         }
         i++;
